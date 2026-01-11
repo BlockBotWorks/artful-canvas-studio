@@ -16,7 +16,7 @@ const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<typeof galleryItems[0] | null>(null);
 
   return (
-    <section id="gallery" className="py-24 section-padding relative overflow-hidden">
+    <section id="gallery" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 paper-texture pointer-events-none" />
       
@@ -27,19 +27,19 @@ const Gallery = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 lg:mb-16"
         >
-          <span className="text-sm uppercase tracking-widest text-muted-foreground">Our Work</span>
-          <h2 className="font-display text-4xl md:text-5xl font-semibold mt-4">
+          <span className="text-xs sm:text-sm uppercase tracking-widest text-muted-foreground">Our Work</span>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mt-3 sm:mt-4">
             The Gallery
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-lg mx-auto">
+          <p className="text-sm sm:text-base text-muted-foreground mt-3 sm:mt-4 max-w-lg mx-auto px-4">
             Each piece tells a unique story. Browse through our collection of handcrafted portraits.
           </p>
         </motion.div>
 
         {/* Masonry Grid */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-3 sm:gap-4 lg:gap-6 space-y-3 sm:space-y-4 lg:space-y-6">
           {galleryItems.map((item, index) => (
             <motion.div
               key={item.id}
@@ -47,7 +47,7 @@ const Gallery = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="break-inside-avoid group relative rounded-2xl overflow-hidden cursor-pointer hover-glow"
+              className="break-inside-avoid group relative rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer hover-glow"
               onClick={() => setSelectedImage(item)}
             >
               <img
@@ -59,19 +59,19 @@ const Gallery = () => {
               
               {/* Hover Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="glass rounded-xl p-4 backdrop-blur-xl">
-                    <h3 className="font-display text-lg font-medium text-white">{item.title}</h3>
-                    <div className="flex items-center gap-3 mt-2 text-sm text-white/80">
+                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 lg:p-6">
+                  <div className="glass rounded-lg sm:rounded-xl p-3 sm:p-4 backdrop-blur-xl">
+                    <h3 className="font-display text-sm sm:text-base lg:text-lg font-medium text-white">{item.title}</h3>
+                    <div className="flex items-center gap-2 sm:gap-3 mt-1 sm:mt-2 text-xs sm:text-sm text-white/80">
                       <span>{item.size} Size</span>
                       <span>•</span>
                       <span>{item.style}</span>
                     </div>
                   </div>
                 </div>
-                <div className="absolute top-4 right-4">
-                  <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                    <Eye className="w-5 h-5 text-white" />
+                <div className="absolute top-2 sm:top-4 right-2 sm:right-4">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                    <Eye className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   </div>
                 </div>
               </div>

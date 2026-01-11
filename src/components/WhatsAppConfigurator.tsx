@@ -56,7 +56,7 @@ const WhatsAppConfigurator = () => {
   const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
 
   return (
-    <section id="order" className="py-24 section-padding relative overflow-hidden bg-secondary/50">
+    <section id="order" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-secondary/50">
       <div className="absolute inset-0 paper-texture pointer-events-none" />
       
       <div className="container mx-auto max-w-4xl">
@@ -65,33 +65,33 @@ const WhatsAppConfigurator = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <span className="text-sm uppercase tracking-widest text-muted-foreground">Order Now</span>
-          <h2 className="font-display text-4xl md:text-5xl font-semibold mt-4">
+          <span className="text-xs sm:text-sm uppercase tracking-widest text-muted-foreground">Order Now</span>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mt-3 sm:mt-4">
             Configure Your Portrait
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-lg mx-auto">
+          <p className="text-sm sm:text-base text-muted-foreground mt-3 sm:mt-4 max-w-lg mx-auto px-4">
             Customize your artwork and get an instant price estimate
           </p>
         </motion.div>
 
         {/* Progress Steps */}
-        <div className="flex items-center justify-center gap-2 mb-12">
+        <div className="flex items-center justify-center gap-1 sm:gap-2 mb-8 sm:mb-12">
           {[1, 2, 3, 4].map((s) => (
             <div key={s} className="flex items-center">
               <button
                 onClick={() => setStep(s)}
-                className={`w-10 h-10 rounded-full flex items-center justify-center font-medium transition-all duration-300 ${
+                className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-sm sm:text-base font-medium transition-all duration-300 ${
                   step >= s 
                     ? 'bg-foreground text-background' 
                     : 'bg-muted text-muted-foreground'
                 }`}
               >
-                {step > s ? <Check className="w-5 h-5" /> : s}
+                {step > s ? <Check className="w-4 h-4 sm:w-5 sm:h-5" /> : s}
               </button>
               {s < 4 && (
-                <div className={`w-12 h-0.5 mx-2 transition-colors ${
+                <div className={`w-6 sm:w-8 lg:w-12 h-0.5 mx-1 sm:mx-2 transition-colors ${
                   step > s ? 'bg-foreground' : 'bg-muted'
                 }`} />
               )}
@@ -102,7 +102,7 @@ const WhatsAppConfigurator = () => {
         {/* Configurator Card */}
         <motion.div
           layout
-          className="glass-card p-8 md:p-12"
+          className="glass-card p-4 sm:p-6 md:p-8 lg:p-12"
         >
           <AnimatePresence mode="wait">
             {/* Step 1: Style */}
@@ -112,28 +112,28 @@ const WhatsAppConfigurator = () => {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
-                className="space-y-6"
+                className="space-y-4 sm:space-y-6"
               >
                 <div className="text-center">
-                  <h3 className="font-display text-2xl font-semibold">Choose Your Style</h3>
-                  <p className="text-muted-foreground mt-2">Select the artistic medium for your portrait</p>
+                  <h3 className="font-display text-xl sm:text-2xl font-semibold">Choose Your Style</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground mt-2">Select the artistic medium for your portrait</p>
                 </div>
-                <div className="grid grid-cols-3 gap-4 mt-8">
+                <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-6 sm:mt-8">
                   {styles.map((style) => (
                     <button
                       key={style.id}
                       onClick={() => setSelectedStyle(style.id)}
-                      className={`p-6 rounded-2xl border-2 transition-all duration-300 hover-glow ${
+                      className={`p-3 sm:p-4 lg:p-6 rounded-xl sm:rounded-2xl border-2 transition-all duration-300 hover-glow ${
                         selectedStyle === style.id
                           ? 'border-foreground bg-foreground text-background'
                           : 'border-border bg-background hover:border-foreground/30'
                       }`}
                     >
-                      <div className="flex flex-col items-center gap-3">
-                        {style.icon}
-                        <span className="font-medium">{style.name}</span>
+                      <div className="flex flex-col items-center gap-1.5 sm:gap-3">
+                        <div className="[&>svg]:w-5 [&>svg]:h-5 sm:[&>svg]:w-6 sm:[&>svg]:h-6">{style.icon}</div>
+                        <span className="text-xs sm:text-sm lg:text-base font-medium">{style.name}</span>
                         {style.price > 0 && (
-                          <span className="text-xs opacity-70">+₹{style.price}</span>
+                          <span className="text-[10px] sm:text-xs opacity-70">+₹{style.price}</span>
                         )}
                       </div>
                     </button>
@@ -149,27 +149,27 @@ const WhatsAppConfigurator = () => {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
-                className="space-y-6"
+                className="space-y-4 sm:space-y-6"
               >
                 <div className="text-center">
-                  <h3 className="font-display text-2xl font-semibold">Select Size</h3>
-                  <p className="text-muted-foreground mt-2">Choose the canvas size for your artwork</p>
+                  <h3 className="font-display text-xl sm:text-2xl font-semibold">Select Size</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground mt-2">Choose the canvas size for your artwork</p>
                 </div>
-                <div className="grid grid-cols-3 gap-4 mt-8">
+                <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-6 sm:mt-8">
                   {sizes.map((size) => (
                     <button
                       key={size.id}
                       onClick={() => setSelectedSize(size.id)}
-                      className={`p-6 rounded-2xl border-2 transition-all duration-300 hover-glow ${
+                      className={`p-3 sm:p-4 lg:p-6 rounded-xl sm:rounded-2xl border-2 transition-all duration-300 hover-glow ${
                         selectedSize === size.id
                           ? 'border-foreground bg-foreground text-background'
                           : 'border-border bg-background hover:border-foreground/30'
                       }`}
                     >
-                      <div className="flex flex-col items-center gap-2">
-                        <span className="font-display text-2xl font-semibold">{size.name}</span>
-                        <span className="text-xs opacity-70">{size.dimensions}</span>
-                        <span className="font-medium mt-2">₹{size.price}</span>
+                      <div className="flex flex-col items-center gap-1 sm:gap-2">
+                        <span className="font-display text-lg sm:text-xl lg:text-2xl font-semibold">{size.name}</span>
+                        <span className="text-[10px] sm:text-xs opacity-70 hidden sm:block">{size.dimensions}</span>
+                        <span className="text-sm sm:text-base font-medium mt-1 sm:mt-2">₹{size.price}</span>
                       </div>
                     </button>
                   ))}
@@ -184,33 +184,33 @@ const WhatsAppConfigurator = () => {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
-                className="space-y-6"
+                className="space-y-4 sm:space-y-6"
               >
                 <div className="text-center">
-                  <h3 className="font-display text-2xl font-semibold">Number of Faces</h3>
-                  <p className="text-muted-foreground mt-2">How many people in your portrait?</p>
+                  <h3 className="font-display text-xl sm:text-2xl font-semibold">Number of Faces</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground mt-2">How many people in your portrait?</p>
                 </div>
-                <div className="flex items-center justify-center gap-8 mt-8">
+                <div className="flex items-center justify-center gap-4 sm:gap-6 lg:gap-8 mt-6 sm:mt-8">
                   <button
                     onClick={() => setFaces(f => Math.max(1, f - 1))}
                     disabled={faces <= 1}
-                    className="w-14 h-14 rounded-full border-2 border-border flex items-center justify-center hover:border-foreground transition-colors disabled:opacity-30"
+                    className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full border-2 border-border flex items-center justify-center hover:border-foreground transition-colors disabled:opacity-30"
                   >
-                    <Minus className="w-6 h-6" />
+                    <Minus className="w-5 h-5 sm:w-6 sm:h-6" />
                   </button>
-                  <div className="text-center">
-                    <span className="font-display text-6xl font-semibold">{faces}</span>
-                    <p className="text-muted-foreground mt-2">{faces === 1 ? 'Person' : 'People'}</p>
+                  <div className="text-center min-w-[80px]">
+                    <span className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold">{faces}</span>
+                    <p className="text-sm sm:text-base text-muted-foreground mt-1 sm:mt-2">{faces === 1 ? 'Person' : 'People'}</p>
                   </div>
                   <button
                     onClick={() => setFaces(f => Math.min(6, f + 1))}
                     disabled={faces >= 6}
-                    className="w-14 h-14 rounded-full border-2 border-border flex items-center justify-center hover:border-foreground transition-colors disabled:opacity-30"
+                    className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full border-2 border-border flex items-center justify-center hover:border-foreground transition-colors disabled:opacity-30"
                   >
-                    <Plus className="w-6 h-6" />
+                    <Plus className="w-5 h-5 sm:w-6 sm:h-6" />
                   </button>
                 </div>
-                <p className="text-center text-sm text-muted-foreground mt-4">
+                <p className="text-center text-xs sm:text-sm text-muted-foreground mt-3 sm:mt-4">
                   Additional faces: +40% per person
                 </p>
               </motion.div>
@@ -223,38 +223,38 @@ const WhatsAppConfigurator = () => {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
-                className="space-y-8"
+                className="space-y-4 sm:space-y-6 lg:space-y-8"
               >
                 <div className="text-center">
-                  <h3 className="font-display text-2xl font-semibold">Your Order Summary</h3>
-                  <p className="text-muted-foreground mt-2">Review your selections and place your order</p>
+                  <h3 className="font-display text-xl sm:text-2xl font-semibold">Your Order Summary</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground mt-2">Review your selections and place your order</p>
                 </div>
 
                 {/* Summary Grid */}
-                <div className="grid md:grid-cols-3 gap-4 mt-8">
-                  <div className="p-4 rounded-xl bg-background text-center">
-                    <span className="text-sm text-muted-foreground">Style</span>
-                    <p className="font-display text-xl font-semibold mt-1">
+                <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-4 sm:mt-8">
+                  <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-background text-center">
+                    <span className="text-xs sm:text-sm text-muted-foreground">Style</span>
+                    <p className="font-display text-base sm:text-lg lg:text-xl font-semibold mt-1">
                       {styles.find(s => s.id === selectedStyle)?.name}
                     </p>
                   </div>
-                  <div className="p-4 rounded-xl bg-background text-center">
-                    <span className="text-sm text-muted-foreground">Size</span>
-                    <p className="font-display text-xl font-semibold mt-1">{selectedSize}</p>
+                  <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-background text-center">
+                    <span className="text-xs sm:text-sm text-muted-foreground">Size</span>
+                    <p className="font-display text-base sm:text-lg lg:text-xl font-semibold mt-1">{selectedSize}</p>
                   </div>
-                  <div className="p-4 rounded-xl bg-background text-center">
-                    <span className="text-sm text-muted-foreground">Faces</span>
-                    <p className="font-display text-xl font-semibold mt-1">{faces}</p>
+                  <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-background text-center">
+                    <span className="text-xs sm:text-sm text-muted-foreground">Faces</span>
+                    <p className="font-display text-base sm:text-lg lg:text-xl font-semibold mt-1">{faces}</p>
                   </div>
                 </div>
 
                 {/* Price Estimate */}
-                <div className="text-center p-6 rounded-2xl bg-warm-light">
-                  <span className="text-sm text-muted-foreground">Estimated Price Range</span>
-                  <p className="font-display text-4xl font-semibold mt-2">
+                <div className="text-center p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-warm-light">
+                  <span className="text-xs sm:text-sm text-muted-foreground">Estimated Price Range</span>
+                  <p className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold mt-2">
                     ₹{priceRange.min.toLocaleString()} - ₹{priceRange.max.toLocaleString()}
                   </p>
-                  <p className="text-xs text-muted-foreground mt-2">
+                  <p className="text-[10px] sm:text-xs text-muted-foreground mt-2">
                     Final price may vary based on complexity
                   </p>
                 </div>
@@ -264,9 +264,9 @@ const WhatsAppConfigurator = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={handleWhatsAppClick}
-                  className="w-full py-5 rounded-2xl whatsapp-btn flex items-center justify-center gap-3 text-lg font-semibold transition-all duration-300"
+                  className="w-full py-3 sm:py-4 lg:py-5 rounded-xl sm:rounded-2xl whatsapp-btn flex items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg font-semibold transition-all duration-300"
                 >
-                  <MessageCircle className="w-6 h-6" />
+                  <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
                   Book via WhatsApp
                 </motion.button>
               </motion.div>
@@ -274,18 +274,18 @@ const WhatsAppConfigurator = () => {
           </AnimatePresence>
 
           {/* Navigation Buttons */}
-          <div className="flex items-center justify-between mt-10 pt-6 border-t border-border">
+          <div className="flex items-center justify-between mt-6 sm:mt-8 lg:mt-10 pt-4 sm:pt-6 border-t border-border">
             <button
               onClick={prevStep}
               disabled={step === 1}
-              className="px-6 py-3 rounded-full border border-border font-medium disabled:opacity-30 hover:bg-muted transition-colors"
+              className="px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-border text-sm sm:text-base font-medium disabled:opacity-30 hover:bg-muted transition-colors"
             >
               Back
             </button>
             {step < 4 && (
               <button
                 onClick={nextStep}
-                className="magnetic-btn px-8 py-3 rounded-full bg-foreground text-background font-medium flex items-center gap-2"
+                className="magnetic-btn px-5 sm:px-8 py-2 sm:py-3 rounded-full bg-foreground text-background text-sm sm:text-base font-medium flex items-center gap-2"
               >
                 Next
                 <ArrowRight className="w-4 h-4" />
